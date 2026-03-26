@@ -2,22 +2,21 @@
   <img alt="CTMWave Terminal Logo" src="./public/logos/wave-logo-dark.png" width="360">
 </p>
 
-# CTMWave Terminal (CTM Fork)
+# CTMWave Terminal
 
-This repository is the CTM-branded fork of Wave Terminal:
+Official CTM fork repository:
 
-- Upstream project: https://github.com/wavetermdev/waveterm
-- CTM fork: https://github.com/CTMJSON/ctmwave
+- https://github.com/CTMJSON/ctmwave
 
-This fork focuses on CTM branding and fork-specific defaults while retaining core Wave functionality.
+This fork focuses on CTM branding, CTMWave AI defaults, and a smoother local development workflow.
 
 ## What Is Different In This Fork
 
 - Product identity is branded as **CTMWave Terminal**
 - User-visible assistant naming is branded as **CTMWave AI**
-- First-run onboarding and GitHub links point to `CTMJSON/ctmwave`
-- Community/Discord prompts are removed from onboarding/help surfaces
-- Fork-specific dev startup wrappers are included (see below)
+- First-run onboarding and support links point to `CTMJSON/ctmwave`
+- Community language is removed from onboarding/help surfaces
+- Fork-specific startup wrappers are included (`npm run dev`, `npm run doctor`)
 
 ## Local Development Quick Start
 
@@ -55,10 +54,7 @@ npm run dev
 `npm run dev` uses a CTM wrapper script that:
 
 - Verifies Node version compatibility
-- Applies default dev cloud endpoints if not already set:
-  - `WCLOUD_PING_ENDPOINT=https://ping-dev.waveterm.dev/central`
-  - `WCLOUD_ENDPOINT=https://api-dev.waveterm.dev/central`
-  - `WCLOUD_WS_ENDPOINT=wss://wsapi-dev.waveterm.dev`
+- Applies default dev cloud endpoints if not already set
 - Launches `electron-vite dev`
 
 If you need raw upstream behavior without wrapper defaults:
@@ -76,6 +72,40 @@ CTMWAVE_DEV_INIT_TIMEOUT_MS=20000 npm run dev
 ```
 
 Default is `12000` ms.
+
+## Desktop Shortcut (macOS)
+
+Create a one-click launcher on your Desktop:
+
+```bash
+cat > ~/Desktop/Start-CTMWave.command <<'EOF'
+#!/bin/zsh
+set -euo pipefail
+
+# Update this path if your repo is elsewhere:
+REPO="$HOME/Scripts/ctmwave"
+cd "$REPO"
+
+export NVM_DIR="$HOME/.nvm"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  . "$NVM_DIR/nvm.sh"
+elif [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+  . "/opt/homebrew/opt/nvm/nvm.sh"
+fi
+
+if command -v nvm >/dev/null 2>&1; then
+  nvm use 22 >/dev/null 2>&1 || nvm install 22
+fi
+
+npm install
+npm run doctor
+npm run dev
+EOF
+
+chmod +x ~/Desktop/Start-CTMWave.command
+```
+
+Then double-click `Start-CTMWave.command` from your Desktop.
 
 ## Useful Paths
 
