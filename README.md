@@ -5,85 +5,105 @@
 # CTMWave Terminal
 <img width="1339" height="784" alt="Gemini_Generated_Image_jyjqzejyjqzejyjq" src="https://github.com/user-attachments/assets/e8503109-bf3f-41fe-992f-2334f86b4411" />
 
-Official CTM fork repository:
 
-- https://github.com/CTMJSON/ctmwave
+CTMWave Terminal is a modified fork of the open-source project [Wave Terminal](https://github.com/wavetermdev/waveterm), licensed under the Apache License 2.0.
 
-This fork focuses on CTM branding, CTMWave AI defaults, and a smoother local development workflow.
+This fork adapts the original project for internal CTM team use, including branding changes, default configuration updates, and improvements to the local development workflow.
+
+---
+
+## Attribution
+
+This project is based on Wave Terminal, originally developed by wavetermdev.
+
+Original project:
+[https://github.com/wavetermdev/waveterm](https://github.com/wavetermdev/waveterm)
+
+Wave Terminal is an open-source, AI-integrated terminal supporting macOS, Linux, and Windows, with features including AI-assisted workflows, durable SSH sessions, and a flexible terminal UI.
+
+All original copyrights and licensing remain in effect under the Apache-2.0 License.
+
+---
 
 ## What Is Different In This Fork
 
-- Product identity is branded as **CTMWave Terminal**
-- User-visible assistant naming is branded as **CTMWave AI**
-- First-run onboarding and support links point to `CTMJSON/ctmwave`
-- Community language is removed from onboarding/help surfaces
-- Fork-specific startup wrappers are included (`npm run dev`, `npm run doctor`)
+* Product identity is branded as **CTMWave Terminal**
+* Assistant naming is branded as **CTMWave AI**
+* Default configuration and onboarding tailored for CTM workflows
+* Internal support and repository links updated to CTMJSON/ctmwave
+* Community-facing language removed from onboarding surfaces
+* Added development tooling:
+
+  * `npm run dev` (CTM wrapper)
+  * `npm run doctor` (environment validation)
+* Improved local development startup experience
+
+---
 
 ## Local Development Quick Start
 
 ### Prerequisites
 
-- Node.js **22+** (an `.nvmrc` is included)
-- npm **10+**
-- Go is optional for local dev startup, but required for backend binary rebuilds
+* Node.js 22+ (see `.nvmrc`)
+* npm 10+
+* Go (optional for development, required for backend rebuilds)
 
 ### 1) Use Node 22
 
-```bash
+```
 nvm install
 nvm use
 ```
 
 ### 2) Install Dependencies
 
-```bash
+```
 npm install
 ```
 
 ### 3) Validate Environment
 
-```bash
+```
 npm run doctor
 ```
 
-### 4) Start CTMWave Dev
+### 4) Start Development
 
-```bash
+```
 npm run dev
 ```
 
-`npm run dev` uses a CTM wrapper script that:
+The `dev` script:
 
-- Verifies Node version compatibility
-- Applies default dev cloud endpoints if not already set
-- Launches `electron-vite dev`
+* Verifies Node compatibility
+* Applies default development endpoints
+* Launches electron-vite
 
-If you need raw upstream behavior without wrapper defaults:
+To run without CTM-specific defaults:
 
-```bash
+```
 npm run dev:raw
 ```
 
-### Optional: Adjust Dev Tab Init Timeout
+---
 
-When startup is slow on a busy machine, you can increase the dev init timeout:
+## Optional: Adjust Dev Startup Timeout
 
-```bash
+```
 CTMWAVE_DEV_INIT_TIMEOUT_MS=20000 npm run dev
 ```
 
-Default is `12000` ms.
+Default: 12000 ms
+
+---
 
 ## Desktop Shortcut (macOS)
 
-Create a one-click launcher on your Desktop:
-
-```bash
+```
 cat > ~/Desktop/Start-CTMWave.command <<'EOF'
 #!/bin/zsh
 set -euo pipefail
 
-# Update this path if your repo is elsewhere:
 REPO="$HOME/Scripts/ctmwave"
 cd "$REPO"
 
@@ -106,26 +126,37 @@ EOF
 chmod +x ~/Desktop/Start-CTMWave.command
 ```
 
-Then double-click `Start-CTMWave.command` from your Desktop.
+---
 
 ## Useful Paths
 
-- Config dir (dev): `~/.config/ctmwave-dev`
-- Data dir (dev): `~/Library/Application Support/ctmwave-dev` (macOS)
-- Backend/desktop logs (dev): `.../ctmwave-dev/waveapp.log`
+* Config (dev): `~/.config/ctmwave-dev`
+* Data (macOS): `~/Library/Application Support/ctmwave-dev`
+* Logs: `.../ctmwave-dev/waveapp.log`
 
-## Key Features (Inherited Core)
+---
 
-- CTMWave AI context-aware terminal assistant
-- Durable SSH sessions with reconnection support
-- Terminal + widget layout with drag/drop block UI
-- Built-in editor and file preview workflows
-- `wsh` command workflows for connected local/remote operations
+## Key Features (Inherited from Wave Terminal)
+
+* Context-aware AI terminal assistant
+* Durable SSH sessions with reconnection support
+* Drag-and-drop terminal and widget interface
+* Built-in editor and file preview system
+* CLI integration via command workflows
+
+---
 
 ## Building From Source
 
-See [BUILD.md](BUILD.md).
+See `BUILD.md`.
+
+---
 
 ## License
 
-This fork remains Apache-2.0 licensed. See [LICENSE](./LICENSE).
+This project remains licensed under the Apache License 2.0.
+
+* Original work: Copyright (c) wavetermdev
+* Modifications: Copyright (c) 2026 CTMJSON
+
+See `LICENSE` and `NOTICE` for full details.
