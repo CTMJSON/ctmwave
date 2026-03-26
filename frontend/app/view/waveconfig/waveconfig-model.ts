@@ -282,17 +282,32 @@ export class WaveConfigViewModel implements ViewModel {
         globalStore.set(this.hasEditedAtom, true);
     }
 
+    setSelectedFile(file: ConfigFile) {
+        globalStore.set(this.selectedFileAtom, file);
+        this.env.rpc.SetMetaCommand(TabRpcClient, {
+            oref: makeORef("block", this.blockId),
+            meta: { file: file.path },
+        });
+    }
+
+    getDefaultContentForMissingFile(file: ConfigFile): string {
+        if (file.path === "waveai.json") {
+            const fullConfig = globalStore.get(this.env.atoms.fullConfigAtom);
+            const waveAiModes = fullConfig?.waveai ?? {};
+            if (Object.keys(waveAiModes).length > 0) {
+                return JSON.stringify(waveAiModes, null, 2);
+            }
+        }
+        return "{\n\n}";
+    }
+
     async loadFile(file: ConfigFile) {
         globalStore.set(this.isLoadingAtom, true);
         globalStore.set(this.errorMessageAtom, null);
         globalStore.set(this.hasEditedAtom, false);
 
         if (file.isSecrets) {
-            globalStore.set(this.selectedFileAtom, file);
-            this.env.rpc.SetMetaCommand(TabRpcClient, {
-                oref: makeORef("block", this.blockId),
-                meta: { file: file.path },
-            });
+            this.setSelectedFile(file);
             globalStore.set(this.isLoadingAtom, false);
             this.checkStorageBackend();
             this.refreshSecrets();
@@ -301,6 +316,22 @@ export class WaveConfigViewModel implements ViewModel {
 
         try {
             const fullPath = `${this.configDir}/${file.path}`;
+            const fileInfo = await this.env.rpc.FileInfoCommand(TabRpcClient, {
+                info: { path: fullPath },
+            });
+
+            if (fileInfo?.notfound) {
+                const defaultContent = this.getDefaultContentForMissingFile(file);
+                await this.env.rpc.FileWriteCommand(TabRpcClient, {
+                    info: { path: fullPath },
+                    data64: stringToBase64(defaultContent),
+                });
+                globalStore.set(this.originalContentAtom, defaultContent);
+                globalStore.set(this.fileContentAtom, defaultContent);
+                this.setSelectedFile(file);
+                return;
+            }
+
             const fileData = await this.env.rpc.FileReadCommand(TabRpcClient, {
                 info: { path: fullPath },
             });
@@ -311,11 +342,7 @@ export class WaveConfigViewModel implements ViewModel {
             } else {
                 globalStore.set(this.fileContentAtom, content);
             }
-            globalStore.set(this.selectedFileAtom, file);
-            this.env.rpc.SetMetaCommand(TabRpcClient, {
-                oref: makeORef("block", this.blockId),
-                meta: { file: file.path },
-            });
+            this.setSelectedFile(file);
         } catch (err) {
             globalStore.set(this.errorMessageAtom, `Failed to load ${file.name}: ${err.message || String(err)}`);
             globalStore.set(this.fileContentAtom, "");
