@@ -94,11 +94,11 @@ const AIWelcomeMessage = memo(() => {
         <div className="text-secondary py-8">
             <div className="text-center">
                 <i className="fa fa-sparkles text-4xl text-accent mb-2 block"></i>
-                <p className="text-lg font-bold text-primary">Welcome to Wave AI</p>
+                <p className="text-lg font-bold text-primary">Welcome to CTMWave AI</p>
             </div>
             <div className="mt-4 text-left max-w-md mx-auto">
                 <p className="text-sm mb-6">
-                    Wave AI is your terminal assistant with context. I can read your terminal output, analyze widgets,
+                    CTMWave AI is your terminal assistant with context. I can read your terminal output, analyze widgets,
                     access files, and help you solve problems faster.
                 </p>
                 <div className="bg-accent/10 border border-accent/30 rounded-lg p-4">
@@ -156,17 +156,17 @@ const AIWelcomeMessage = memo(() => {
                         </div>
                         <div className="flex items-start gap-3">
                             <div className="w-4 text-center flex-shrink-0">
-                                <i className="fa-brands fa-discord text-accent"></i>
+                                <i className="fa-brands fa-github text-accent"></i>
                             </div>
                             <div>
                                 Questions or feedback?{" "}
                                 <a
                                     target="_blank"
-                                    href="https://discord.gg/XfvZ334gwU"
+                                    href="https://github.com/CTMJSON/ctmwave"
                                     rel="noopener"
                                     className="text-accent hover:underline cursor-pointer"
                                 >
-                                    Join our Discord
+                                    View the CTMWave fork
                                 </a>
                             </div>
                         </div>
@@ -188,11 +188,12 @@ const AIBuilderWelcomeMessage = memo(() => {
         <div className="text-secondary py-8">
             <div className="text-center">
                 <i className="fa fa-sparkles text-4xl text-accent mb-4 block"></i>
-                <p className="text-lg font-bold text-primary">WaveApp Builder</p>
+                <p className="text-lg font-bold text-primary">CTMWave App Builder</p>
             </div>
             <div className="mt-4 text-left max-w-md mx-auto">
                 <p className="text-sm mb-6">
-                    The WaveApp builder helps create wave widgets that integrate seamlessly into Wave Terminal.
+                    The CTMWave App builder helps create CTMWave widgets that integrate seamlessly into CTMWave
+                    Terminal.
                 </p>
             </div>
         </div>
@@ -512,7 +513,7 @@ const AIPanelComponentInner = memo(({ roundTopLeft }: AIPanelComponentInnerProps
 
     const handleFocusCapture = useCallback(
         (_event: React.FocusEvent) => {
-            // console.log("Wave AI focus capture", getElemAsStr(event.target));
+            // console.log("CTMWave AI focus capture", getElemAsStr(event.target));
             model.requestWaveAIFocus();
         },
         [model]

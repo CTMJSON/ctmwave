@@ -56,7 +56,7 @@ class TsunamiViewModel extends WebViewModel {
         });
         this.viewName = jotai.atom((get) => {
             const meta = get(this.appMeta);
-            return meta?.title || "WaveApp";
+            return meta?.title || "CTMWave App";
         });
         const initialRTInfo = RpcApi.GetRTInfoCommand(TabRpcClient, {
             oref: WOS.makeORef("block", this.blockId),
@@ -199,15 +199,15 @@ class TsunamiViewModel extends WebViewModel {
         // Add tsunami-specific menu items at the beginning
         const tsunamiItems: ContextMenuItem[] = [
             {
-                label: "Stop WaveApp",
+                label: "Stop CTMWave App",
                 click: () => this.destroyController(),
             },
             {
-                label: "Restart WaveApp",
+                label: "Restart CTMWave App",
                 click: () => this.restartController(),
             },
             {
-                label: "Restart WaveApp and Force Rebuild",
+                label: "Restart CTMWave App and Force Rebuild",
                 click: () => this.restartAndForceRebuild(),
             },
             {
@@ -218,7 +218,7 @@ class TsunamiViewModel extends WebViewModel {
         if (showRemixOption) {
             tsunamiItems.push(
                 {
-                    label: "Remix WaveApp in Builder",
+                    label: "Remix CTMWave App in Builder",
                     click: () => this.remixInBuilder(),
                 },
                 {

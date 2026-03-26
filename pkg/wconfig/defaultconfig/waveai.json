@@ -41,7 +41,7 @@
         "display:name": "Gemma3 12B Tools (Local / Agent + Files)",
         "display:order": 4,
         "display:icon": "feather",
-        "display:description": "Local Gemma3 12B with tool calling support (lukaspetrik variant) — great for code, explanations, file read/write, shell in Wave; 24GB RAM friendly, multimodal",
+        "display:description": "Local Gemma3 12B with tool calling support (lukaspetrik variant) — great for code, explanations, file read/write, shell in CTMWave Terminal; 24GB RAM friendly, multimodal",
         "ai:provider": "custom",
         "ai:apitype": "openai-chat",
         "ai:endpoint": "http://localhost:11434/v1/chat/completions",

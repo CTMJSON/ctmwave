@@ -63,7 +63,7 @@ const mockWidgets: { [key: string]: WidgetConfigType } = {
         icon: "sparkles",
         color: "#a78bfa",
         label: "AI",
-        description: "Open Wave AI",
+        description: "Open CTMWave AI",
         "display:order": 3,
         blockdef: { meta: { view: "waveai" } },
     },
