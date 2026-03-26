@@ -32,7 +32,7 @@ const waveDirName = `${waveDirNamePrefix}${waveDirNameSuffix ? `-${waveDirNameSu
 
 const paths = envPaths("ctmwave", { suffix: waveDirNameSuffix });
 
-app.setName(isDev ? "CTM (Dev)" : "CTM");
+app.setName(isDev ? "CTMWave Terminal (Dev)" : "CTMWave Terminal");
 const unamePlatform = process.platform;
 const unameArch: string = process.arch;
 keyutil.setKeyUtilPlatform(unamePlatform);
@@ -47,8 +47,8 @@ export function checkIfRunningUnderARM64Translation(fullConfig: FullConfigType) 
         const dialogOpts: Electron.MessageBoxOptions = {
             type: "warning",
             buttons: ["Dismiss", "Learn More"],
-            title: "CTM has detected a performance issue",
-            message: `CTM is running in ARM64 translation mode which may impact performance.\n\nRecommendation: Download the native ARM64 version from our website for optimal performance.`,
+            title: "CTMWave Terminal has detected a performance issue",
+            message: `CTMWave Terminal is running in ARM64 translation mode which may impact performance.\n\nRecommendation: Download the native ARM64 version from our website for optimal performance.`,
         };
 
         const choice = dialog.showMessageBoxSync(null, dialogOpts);
@@ -180,6 +180,19 @@ function getWaveSrvCwd(): string {
     return getWaveDataDir();
 }
 
+function setApplicationDockIcon() {
+    if (process.platform !== "darwin") {
+        return;
+    }
+    if (!app.dock?.setIcon) {
+        return;
+    }
+    const iconPath = path.join(getElectronAppBasePath(), "public", "logos", "ctm-logo-icon.png");
+    if (existsSync(iconPath)) {
+        app.dock.setIcon(iconPath);
+    }
+}
+
 ipcMain.on("get-is-dev", (event) => {
     event.returnValue = isDev;
 });
@@ -279,6 +292,7 @@ export {
     getXdgCurrentDesktop,
     isDev,
     isDevVite,
+    setApplicationDockIcon,
     unameArch,
     unamePlatform,
     WaveConfigHomeVarName,

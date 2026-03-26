@@ -93,8 +93,8 @@ export class Updater {
             // Display the update banner and create a system notification
             this.status = "ready";
             const updateNotification = new Notification({
-                title: "CTM Terminal",
-                body: "A new version of CTM Terminal is ready to install.",
+                title: "CTMWave Terminal",
+                body: "A new version of CTMWave Terminal is ready to install.",
             });
             updateNotification.on("click", () => {
                 fireAndForget(this.promptToInstallUpdate.bind(this));

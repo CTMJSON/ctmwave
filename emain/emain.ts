@@ -36,6 +36,7 @@ import {
     getWaveConfigDir,
     getWaveDataDir,
     isDev,
+    setApplicationDockIcon,
     unameArch,
     unamePlatform,
 } from "./emain-platform";
@@ -277,7 +278,7 @@ electronApp.on("before-quit", (e) => {
             type: "question",
             buttons: ["Cancel", "Quit"],
             title: "Confirm Quit",
-            message: "Are you sure you want to quit CTM Terminal?",
+            message: "Are you sure you want to quit CTMWave Terminal?",
             defaultId: 0,
             cancelId: 0,
         });
@@ -396,6 +397,7 @@ async function appMain() {
     const ready = await getWaveSrvReady();
     console.log("wavesrv ready signal received", ready, Date.now() - startTs, "ms");
     await electronApp.whenReady();
+    setApplicationDockIcon();
     configureAuthKeyRequestInjection(electron.session.defaultSession);
     initIpcHandlers();
 

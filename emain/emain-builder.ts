@@ -59,7 +59,7 @@ export async function createBuilderWindow(appId: string): Promise<BuilderWindowT
         minHeight: MinWindowHeight,
         titleBarStyle: unamePlatform === "darwin" ? "hiddenInset" : "default",
         icon:
-            unamePlatform === "linux"
+            unamePlatform === "linux" || unamePlatform === "win32"
                 ? path.join(getElectronAppBasePath(), "public/logos/ctm-logo-icon.png")
                 : undefined,
         show: false,

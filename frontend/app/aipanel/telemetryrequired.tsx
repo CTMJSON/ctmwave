@@ -68,7 +68,7 @@ const TelemetryRequiredMessage = ({ className }: TelemetryRequiredMessageProps) 
                                             rel="noopener noreferrer"
                                             className="!text-secondary hover:!text-accent/80 cursor-pointer"
                                         >
-                                            https://docs.waveterm.dev/waveai-modes
+                                            CTMWave AI mode documentation
                                         </a>
                                         .
                                     </p>

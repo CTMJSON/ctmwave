@@ -22,7 +22,10 @@ import { delay, ensureBoundsAreVisible, waveKeyToElectronKey } from "./emain-uti
 import { ElectronWshClient } from "./emain-wsh";
 import { updater } from "./updater";
 
-const DevInitTimeoutMs = 5000;
+const DevInitTimeoutMs = (() => {
+    const value = Number.parseInt(process.env.CTMWAVE_DEV_INIT_TIMEOUT_MS ?? "12000", 10);
+    return Number.isFinite(value) && value > 0 ? value : 12000;
+})();
 
 export type WindowOpts = {
     unamePlatform: NodeJS.Platform;
@@ -195,6 +198,7 @@ export class WaveBrowserWindow extends BaseWindow {
                 symbolColor: "#c3c8c2",
                 height: 32,
             };
+            winOpts.icon = path.join(getElectronAppBasePath(), "public/logos/ctm-logo-icon.png");
             if (isTransparent) {
                 winOpts.transparent = true;
             } else if (isBlur) {
