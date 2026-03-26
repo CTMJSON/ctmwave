@@ -37,6 +37,6 @@
     "term:copyonselect": true,
     "term:durable": false,
     "waveai:showcloudmodes": false,
-    "waveai:defaultmode": "grok-code-fast",
+    "waveai:defaultmode": "grok-41-fast",
     "preview:defaultsort": "name"
 }

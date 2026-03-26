@@ -272,7 +272,7 @@ export const AIModeDropdown = memo(({ compatibilityMode = false }: AIModeDropdow
                                             {section.noTelemetry && (
                                                 <button
                                                     onClick={handleEnableTelemetry}
-                                                    className="text-center text-[11px] text-green-300 hover:text-green-200 pb-1 cursor-pointer transition-colors w-full"
+                                                    className="text-center text-[11px] text-accent/80 hover:text-accent pb-1 cursor-pointer transition-colors w-full"
                                                 >
                                                     (enable telemetry to unlock CTMWave AI Cloud)
                                                 </button>
