@@ -1,1 +1,28 @@
+CTMWave Terminal
+
+This project is a modified fork of Wave Terminal:
+https://github.com/wavetermdev/waveterm
+
+Original NOTICE:
 Copyright 2025, Command Line Inc.
+
+Original Work:
+Wave Terminal
+Copyright (c) wavetermdev
+
+Licensed under the Apache License, Version 2.0.
+
+Modifications:
+Copyright (c) 2026 CTMJSON
+
+Changes made in this fork include, but are not limited to:
+
+* Rebranding to CTMWave Terminal and CTMWave AI
+* Modified onboarding, defaults, and configuration
+* Removal of community-facing language in UI surfaces
+* Addition of development tooling and wrapper scripts
+* Adjustments to local development workflow
+
+This NOTICE file is provided in accordance with the Apache License 2.0.
+See the LICENSE file for full license text.
+
