@@ -3,6 +3,7 @@
 </p>
 
 # CTMWave Terminal
+<img width="1339" height="784" alt="Gemini_Generated_Image_jyjqzejyjqzejyjq" src="https://github.com/user-attachments/assets/e8503109-bf3f-41fe-992f-2334f86b4411" />
 
 Official CTM fork repository:
 
