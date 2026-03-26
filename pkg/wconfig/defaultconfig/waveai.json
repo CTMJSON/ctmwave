@@ -1,43 +1,142 @@
 {
-    "waveai@quick": {
-        "display:name": "Quick",
-        "display:order": -3,
+    "grok-code-fast": {
+        "display:name": "Grok Code Fast (Cheap / Quick)",
+        "display:order": 1,
+        "display:icon": "code",
+        "display:description": "xAI Grok — fast & cheap for basic code, quick scripts, and iterations",
+        "ai:provider": "custom",
+        "ai:apitype": "openai-chat",
+        "ai:endpoint": "https://api.x.ai/v1/chat/completions",
+        "ai:model": "grok-code-fast-1",
+        "ai:apitokensecretname": "XAI_GROK_KEY",
+        "ai:capabilities": [
+            "tools"
+        ]
+    },
+    "ollama-minimax-m25": {
+        "display:name": "MiniMax M2.5 (Cloud / Deep Coder)",
+        "display:order": 2,
+        "display:icon": "microchip",
+        "display:description": "MiniMax M2.5 via Ollama cloud — excellent for deep coding, debugging, complex refactors, agentic tasks (internet required)",
+        "ai:provider": "custom",
+        "ai:apitype": "openai-chat",
+        "ai:endpoint": "http://localhost:11434/v1/chat/completions",
+        "ai:model": "minimax-m2.5:cloud",
+        "ai:apitoken": "ollama",
+        "ai:capabilities": []
+    },
+    "ollama-kimi-k2-thinking": {
+        "display:name": "Kimi K2 Thinking (Cloud / Fast Reasoning)",
+        "display:order": 3,
         "display:icon": "bolt",
-        "display:description": "Fastest responses (gpt-5-mini)",
-        "ai:provider": "wave",
-        "ai:apitype": "openai-responses",
-        "ai:model": "gpt-5-mini",
-        "ai:thinkinglevel": "low",
-        "ai:verbosity": "low",
-        "ai:capabilities": ["tools", "images", "pdfs"],
-        "ai:switchcompat": ["wavecloud"]
+        "display:description": "Kimi K2 Thinking via Ollama cloud — strong stepwise reasoning, everyday coding, agentic workflows (internet required)",
+        "ai:provider": "custom",
+        "ai:apitype": "openai-chat",
+        "ai:endpoint": "http://localhost:11434/v1/chat/completions",
+        "ai:model": "kimi-k2-thinking:cloud",
+        "ai:apitoken": "ollama",
+        "ai:capabilities": []
     },
-    "waveai@balanced": {
-        "display:name": "Balanced",
-        "display:order": -2,
-        "display:icon": "sparkles",
-        "display:description": "Good mix of speed and accuracy\n(gpt-5.1 with minimal thinking)",
-        "ai:provider": "wave",
-        "ai:apitype": "openai-responses",
-        "ai:model": "gpt-5.1",
-        "ai:thinkinglevel": "low",
-        "ai:verbosity": "low",
-        "ai:capabilities": ["tools", "images", "pdfs"],
-        "waveai:premium": true,
-        "ai:switchcompat": ["wavecloud"]
+    "ollama-gemma3-tools": {
+        "display:name": "Gemma3 12B Tools (Local / Agent + Files)",
+        "display:order": 4,
+        "display:icon": "feather",
+        "display:description": "Local Gemma3 12B with tool calling support (lukaspetrik variant) — great for code, explanations, file read/write, shell in Wave; 24GB RAM friendly, multimodal",
+        "ai:provider": "custom",
+        "ai:apitype": "openai-chat",
+        "ai:endpoint": "http://localhost:11434/v1/chat/completions",
+        "ai:model": "lukaspetrik/gemma3-tools:12b",
+        "ai:apitoken": "ollama",
+        "ai:capabilities": [
+            "tools"
+        ]
     },
-    "waveai@deep": {
-        "display:name": "Deep",
-        "display:order": -1,
-        "display:icon": "lightbulb",
-        "display:description": "Slower but most capable\n(gpt-5.1 with full reasoning)",
-        "ai:provider": "wave",
+    "ollama-qwen-coder": {
+        "display:name": "Qwen2.5-Coder 14B (Local / Tools + Coding)",
+        "display:order": 5,
+        "display:icon": "microchip",
+        "display:description": "Local Qwen2.5-Coder 14B — top-tier coding, debugging, refactors + native tool support (file ops, shell, agents); fits well on 24GB RAM",
+        "ai:provider": "custom",
+        "ai:apitype": "openai-chat",
+        "ai:endpoint": "http://localhost:11434/v1/chat/completions",
+        "ai:model": "qwen2.5-coder:14b",
+        "ai:apitoken": "ollama",
+        "ai:capabilities": [
+            "tools"
+        ]
+    },
+    "ollama-llama3.1": {
+        "display:name": "Llama 3.1 8B (Local / Balanced Tools)",
+        "display:order": 6,
+        "display:icon": "bolt",
+        "display:description": "Local Llama 3.1 8B Instruct — reliable reasoning, coding + native tools (file read/write, shell); fast & low-RAM (~6-8GB)",
+        "ai:provider": "custom",
+        "ai:apitype": "openai-chat",
+        "ai:endpoint": "http://localhost:11434/v1/chat/completions",
+        "ai:model": "llama3.1:8b",
+        "ai:apitoken": "ollama",
+        "ai:capabilities": [
+            "tools"
+        ]
+    },
+    "gpt-5.3-codex": {
+        "display:name": "GPT-5.3 Codex (Top-Tier Agentic Coding)",
+        "display:order": 7,
+        "display:icon": "brain",
+        "display:description": "OpenAI GPT-5.3-Codex — most capable agentic coding model; excels at long-horizon tasks, terminal workflows, complex refactors, debugging, and real-world engineering",
+        "ai:provider": "custom",
         "ai:apitype": "openai-responses",
+        "ai:endpoint": "https://api.openai.com/v1/responses",
+        "ai:model": "gpt-5.3-codex",
+        "ai:apitokensecretname": "OPENAI_KEY",
+        "ai:capabilities": [
+            "tools",
+            "images"
+        ]
+    },
+    "gpt-5.1-codex-mini": {
+        "display:name": "GPT-5.1 Codex Mini (Fast / Cost-Effective)",
+        "display:order": 8,
+        "display:icon": "brain",
+        "display:description": "OpenAI GPT-5.1-Codex-Mini — lighter, faster, cheaper variant for quick code suggestions, everyday scripting, reviews, and iterations; strong balance of speed and capability",
+        "ai:provider": "custom",
+        "ai:apitype": "openai-responses",
+        "ai:endpoint": "https://api.openai.com/v1/responses",
+        "ai:model": "gpt-5.1-codex-mini",
+        "ai:apitokensecretname": "OPENAI_KEY",
+        "ai:capabilities": [
+            "tools",
+            "images"
+        ]
+    },
+    "openai-gpt51-responses": {
+        "display:name": "GPT-5.1 (High Power Coding)",
+        "display:order": 9,
+        "display:icon": "brain",
+        "display:description": "OpenAI GPT-5.1 — deeper logic and improved reasoning vs 4.1",
+        "ai:provider": "custom",
+        "ai:apitype": "openai-responses",
+        "ai:endpoint": "https://api.openai.com/v1/responses",
         "ai:model": "gpt-5.1",
-        "ai:thinkinglevel": "medium",
-        "ai:verbosity": "low",
-        "ai:capabilities": ["tools", "images", "pdfs"],
-        "waveai:premium": true,
-        "ai:switchcompat": ["wavecloud"]
+        "ai:apitokensecretname": "OPENAI_KEY",
+        "ai:capabilities": [
+            "tools",
+            "images"
+        ]
+    },
+    "openai-gpt52-responses": {
+        "display:name": "GPT-5.2 (Top-Tier / Complex Work)",
+        "display:order": 10,
+        "display:icon": "brain",
+        "display:description": "OpenAI GPT-5.2 — best choice for complex logic, workflows, and architecture",
+        "ai:provider": "custom",
+        "ai:apitype": "openai-responses",
+        "ai:endpoint": "https://api.openai.com/v1/responses",
+        "ai:model": "gpt-5.2",
+        "ai:apitokensecretname": "OPENAI_KEY",
+        "ai:capabilities": [
+            "tools",
+            "images"
+        ]
     }
 }

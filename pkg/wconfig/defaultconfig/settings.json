@@ -16,7 +16,7 @@
     "conn:askbeforewshinstall": true,
     "conn:wshenabled": true,
     "editor:minimapenabled": true,
-    "web:defaulturl": "https://github.com/wavetermdev/waveterm",
+    "web:defaulturl": "https://github.com/CTMJSON/ctmwave",
     "web:defaultsearch": "https://www.google.com/search?q={query}",
     "window:tilegapsize": 3,
     "window:maxtabcachesize": 10,
@@ -36,7 +36,7 @@
     "term:cursorblink": false,
     "term:copyonselect": true,
     "term:durable": false,
-    "waveai:showcloudmodes": true,
-    "waveai:defaultmode": "waveai@balanced",
+    "waveai:showcloudmodes": false,
+    "waveai:defaultmode": "grok-code-fast",
     "preview:defaultsort": "name"
 }

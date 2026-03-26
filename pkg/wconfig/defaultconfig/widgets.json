@@ -50,5 +50,41 @@
                 "view": "sysinfo"
             }
         }
+    },
+    "cmatrix-widget": {
+        "label": "cmatrix",
+        "icon": "matrix",
+        "color": "#00ff41",
+        "blockdef": {
+            "meta": {
+                "view": "term",
+                "controller": "cmd",
+                "cmd": "zsh -l -i -c 'cmatrix -u 9 -s -b'"
+            }
+        }
+    },
+    "cariddi-widget": {
+        "label": "cariddi",
+        "icon": "spider",
+        "color": "#ff5555",
+        "blockdef": {
+            "meta": {
+                "view": "term",
+                "controller": "cmd",
+                "cmd": "zsh -l -i -c 'cariddi -h'"
+            }
+        }
+    },
+    "btop-widget": {
+        "label": "btop",
+        "icon": "chart-bar",
+        "color": "#55aaff",
+        "blockdef": {
+            "meta": {
+                "view": "term",
+                "controller": "cmd",
+                "cmd": "zsh -l -i -c 'btop'"
+            }
+        }
     }
 }

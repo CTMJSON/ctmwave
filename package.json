@@ -1,16 +1,16 @@
 {
-    "name": "waveterm",
+    "name": "ctmwave",
     "author": {
-        "name": "Command Line Inc",
-        "email": "info@commandline.dev"
+        "name": "CallTrackingMetrics",
+        "email": "info@calltrackingmetrics.com"
     },
-    "productName": "Wave",
-    "description": "Open-Source AI-Native Terminal Built for Seamless Workflows",
+    "productName": "CTM",
+    "description": "AI-Native Terminal Built for Seamless Workflows",
     "license": "Apache-2.0",
     "version": "0.14.4-beta.0",
-    "homepage": "https://waveterm.dev",
+    "homepage": "https://calltrackingmetrics.com",
     "build": {
-        "appId": "dev.commandline.waveterm"
+        "appId": "com.calltrackingmetrics.ctmwave"
     },
     "private": true,
     "main": "./dist/main/index.js",
